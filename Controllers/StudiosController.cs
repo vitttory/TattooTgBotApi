@@ -106,7 +106,7 @@ namespace TattooTgBotApi.Controllers
 
 
                     command.Parameters.Add("@Name", MySqlDbType.String).Value = Name;
-                    command.Parameters.Add("@Rating", MySqlDbType.Int32).Value = Rating;
+                    command.Parameters.Add("@Rating", MySqlDbType.Int32).Value = Rating; 
 
                     await connection.OpenAsync();
 

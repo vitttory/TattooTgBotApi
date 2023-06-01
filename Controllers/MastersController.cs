@@ -107,13 +107,12 @@ namespace TattooTgBotApi.Controllers
             ConnectDB connectDB = new ConnectDB();
             using (MySqlConnection connection = connectDB.GetConnection())
             {
+                await connection.OpenAsync();
                 MySqlCommand command = new MySqlCommand("DELETE FROM favmasters WHERE Age = @Age AND Name = @Name AND Sex = @Sex", connection);
 
                 command.Parameters.Add("@Age", MySqlDbType.Int32).Value = Age;
                 command.Parameters.Add("@Name", MySqlDbType.String).Value = Name;
                 command.Parameters.Add("@Sex", MySqlDbType.String).Value = Sex;
-
-                await connection.OpenAsync();
 
                 int deletedRows = await command.ExecuteNonQueryAsync();
 
